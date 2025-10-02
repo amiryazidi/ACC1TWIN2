@@ -2,7 +2,7 @@
 
 <h2>{{title}}</h2>
 
-
+<input type="text" placeholder="search by name" class="form-control mb-3" [(ngModel)]="searchTerm">
 <table border="1" class="table table-striped">
   <tr>
     <th scope="col">ID</th>
@@ -14,6 +14,7 @@
     <th scope="col">Action</th>
     </tr>
   <tr *ngFor="let p of listProducts">
+    <ng-container *ngIf="p.name == searchTerm || searchTerm == ''">
     <td scope="row">{{p.id}}</td>
     <td >{{p.name}}</td>
     <td>{{p.price}}</td>
@@ -21,9 +22,11 @@
     <td>{{p.like}}</td>
     <td>{{p.quantity}}</td>
     <td>
-      <button class="btn btn-info" (click)="buy()">buy</button>
+
+      <button [disabled]="p.quantity==0"  class="btn btn-info" (click)="buy(p)">buy</button>
       <button class="btn btn-dark">Like</button>
 
     </td>
+    </ng-container>
   </tr>
 </table>

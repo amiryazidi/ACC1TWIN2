@@ -9,6 +9,7 @@ export class ProductComponent implements OnInit {
 
   title: string;
   listProducts: Product[] = [];
+  searchTerm: string = '';
   constructor() {
   }
 
@@ -22,8 +23,9 @@ export class ProductComponent implements OnInit {
   }
 
   // implement buy method
-  buy(){
-    
+  buy(p:Product){
+
+    p.quantity--;
   }
 
 }
