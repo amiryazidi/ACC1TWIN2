@@ -3,11 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './layout/home/home.component';
 import { ProductComponent } from './layout/product/product.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { ListEventComponent } from './features/events/list-event/list-event.component';
 
 const routes: Routes = [
-  { path :'home',  component : HomeComponent},
-  { path : '' , redirectTo : 'home' , pathMatch : 'full'}, // default route
+ // { path :'events',  component : ListEventComponent},
+  { path : '' , redirectTo : 'events' , pathMatch : 'full'}, // default route
   { path : 'product' , component : ProductComponent},
+  { path: 'events', loadChildren: () =>
+    import('./features/events/events.module').then(m => m.EventsModule) },
+ { path: 'tichets', loadChildren: () => import('./features/tickets/tickets.module').then(m => m.TicketsModule) },
+ { path: 'tichets', loadChildren: () => import('./features/feedback/feedback.module').then(m => m.FeedbackModule) },
+ { path: 'tichets', loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule) },
   { path : '**' , component : NotFoundComponent}, // wildcard route for 404 not found page
 
 

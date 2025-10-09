@@ -9,6 +9,8 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { ProductComponent } from './layout/product/product.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
+import { DatePersPipe } from './shared/pipes/date-pers.pipe';
+import { TestDirective } from './shared/Directives/test.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FooterComponent,
     ProductComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DatePersPipe,
+    TestDirective,
+
   ],
   imports: [
     BrowserModule,
