@@ -11,6 +11,9 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { DatePersPipe } from './shared/pipes/date-pers.pipe';
 import { TestDirective } from './shared/Directives/test.directive';
+import { TelephoneComponent } from './layout/telephone/telephone.component';
+import { TvComponent } from './layout/tv/tv.component';
+import { CardProductComponent } from './layout/card-product/card-product.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { TestDirective } from './shared/Directives/test.directive';
     NotFoundComponent,
     DatePersPipe,
     TestDirective,
+    TelephoneComponent,
+    TvComponent,
+    CardProductComponent,
 
   ],
   imports: [

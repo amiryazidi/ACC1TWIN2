@@ -6,5 +6,6 @@ export class Product {
   description: string;
   like: number;
   quantity:number;
+  image:string ;
 
 }
