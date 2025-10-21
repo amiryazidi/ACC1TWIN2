@@ -7,6 +7,7 @@ import { ListEventComponent } from './list-event/list-event.component';
 import { DetailEventComponent } from './detail-event/detail-event.component';
 import { CardEventComponent } from './card-event/card-event.component';
 import { BestEventComponent } from './best-event/best-event.component';
+import { OrderByLikesPipe } from '../../shared/pipes/order-by-likes.pipe';
 
 
 @NgModule({
@@ -15,11 +16,14 @@ import { BestEventComponent } from './best-event/best-event.component';
     ListEventComponent,
     DetailEventComponent,
     CardEventComponent,
-    BestEventComponent
+    BestEventComponent,
+    OrderByLikesPipe
   ],
   imports: [
     CommonModule,
-    EventsRoutingModule
+    EventsRoutingModule,
+    
+
   ]
 })
 export class EventsModule { }

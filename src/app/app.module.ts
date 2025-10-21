@@ -14,6 +14,7 @@ import { TestDirective } from './shared/Directives/test.directive';
 import { TelephoneComponent } from './layout/telephone/telephone.component';
 import { TvComponent } from './layout/tv/tv.component';
 import { CardProductComponent } from './layout/card-product/card-product.component';
+import { OrderByLikesPipe } from './shared/pipes/order-by-likes.pipe';
 
 @NgModule({
   declarations: [
