@@ -3,7 +3,7 @@
 
   <div class="row g-3">
     <div class="col-md-4" *ngFor="let e of events">
-    <app-card-event [e]="e"></app-card-event>
+    <app-card-event [e]="e" [showButtons]="true"></app-card-event>
     </div>
   </div>
 </div>
@@ -11,5 +11,5 @@
 
 <div class="container py-4">
   <!-- Section Meilleurs Événements -->
-  <app-best-event [events]="events"></app-best-event>
+  <app-best-event [events]="events" ></app-best-event>
 </div>

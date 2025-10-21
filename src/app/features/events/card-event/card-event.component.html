@@ -10,7 +10,11 @@
           <p>Places disponibles : {{ e.nbPlaces }}</p>
 
           <!-- Bouton Like -->
-
+          <div *ngIf="showButtons">
+          <button class="btn btn-success"> 
+            like
+          </button>
+          </div>
           <span class="ms-2">{{ e.nbrLike }}</span>
           <a  [routerLink]="['./detail',e.id]">Detail</a>
         </div>

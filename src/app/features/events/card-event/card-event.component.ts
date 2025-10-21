@@ -8,4 +8,5 @@ import { Eventy } from '../../../model/eventy';
 })
 export class CardEventComponent {
 @Input()  e:Eventy
+@Input() showButtons: boolean = true;
 }
