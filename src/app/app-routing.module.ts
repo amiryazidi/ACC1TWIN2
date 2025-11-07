@@ -4,11 +4,13 @@ import { HomeComponent } from './layout/home/home.component';
 import { ProductComponent } from './layout/product/product.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { ListEventComponent } from './features/events/list-event/list-event.component';
+import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
 
 const routes: Routes = [
  // { path :'events',  component : ListEventComponent},
   { path : '' , redirectTo : 'events' , pathMatch : 'full'}, // default route
   { path : 'product' , component : ProductComponent},
+  { path : 'rf' , component : ReactiveFormComponent},
   { path: 'events', loadChildren: () =>
     import('./features/events/events.module').then(m => m.EventsModule) },
  { path: 'tichets', loadChildren: () => import('./features/tickets/tickets.module').then(m => m.TicketsModule) },

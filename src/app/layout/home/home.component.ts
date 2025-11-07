@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  // variable pour stocker le produit sélectionné
+  selectedProduct: string = '';
+
+  // tu peux ajouter d'autres méthodes si besoin, par exemple pour récupérer des données
+  constructor() { }
 }

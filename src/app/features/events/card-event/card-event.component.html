@@ -1,22 +1,26 @@
-  <div class="card h-100 shadow-sm">
-        <img src="{{e.imageUrl}}" [alt]="e.title" [title]="e.title"
-             class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
+<div class="card h-100 shadow-sm" appChangeBackground>
+  <img src="{{e.imageUrl}}" [alt]="e.title" [title]="e.title" placeholder="Image de l'événement"
+       class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
 
-        <div class="card-body">
-          <h5 class="card-title">{{ e.title }}</h5>
-          <p class="text-muted">{{ e.location }} • {{ e.date | date}}</p>
-          <p>{{ e.description }}</p>
-          <p class="fw-bold">{{ e.price }}</p>
-          <p>Places disponibles : {{ e.nbPlaces }}</p>
+  <div class="card-body">
+    <h5 class="card-title" [ngStyle]="{'color':e.nbrLike>5 ? 'red' : 'green'}">{{ e.title }}</h5>
+    <p class="text-muted">{{ e.location }} • {{ e.date | date }}</p>
+    <p>{{ e.description }}</p>
+    <p class="fw-bold">{{ e.price | currency:'TND':'symbol-narrow' }}</p>
+    <p [ngClass]="{'text-danger': e.nbPlaces < 5, 'text-success': e.nbPlaces > 5}">
+      Places disponibles : {{ e.nbPlaces }}
+    </p>
 
-          <!-- Bouton Like -->
-          <div *ngIf="showButtons">
-          <button class="btn btn-success"> 
-            like
-          </button>
-          <p>{{ e.nbrLike }}</p>
-          </div>
-          <span class="ms-2">{{ e.nbrLike }}</span>
-          <a  [routerLink]="['./detail',e.id]">Detail</a>
-        </div>
-      </div>
+    <div *ngIf="showButtons">
+      <button class="btn btn-outline-danger btn-sm d-flex align-items-center"
+              (click)="likeEvent(e)">
+        <i class="bi bi-heart me-1"></i> J’aime
+      </button>
+      <span class="text-muted">❤️ {{ e.nbrLike }}</span>
+    </div>
+
+    <a [routerLink]="['./details', e.id]" class="btn btn-sm btn-outline-primary">
+      <i class="bi bi-eye"></i> Voir détails
+    </a>
+  </div>
+</div>

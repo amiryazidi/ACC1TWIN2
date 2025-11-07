@@ -8,11 +8,21 @@ import { EventsService } from '../../../shared/service/events.service';
   styleUrl: './list-event.component.css'
 })
 export class ListEventComponent {
+events: Eventy[];
+likedEvents: Eventy[] = [];
+favorites: Eventy[] = [];
+
+  today = new Date();
   searchTerm = '';
-  events:Eventy[]=[];
-  constructor(private eventS : EventsService) {
+  constructor(private eventsService: EventsService) {
   }
   ngOnInit() {
-    this.events=this.eventS.events
+    this.events = this.eventsService.events;
+  }
+  likeEvent(event: Eventy){
+    let index= this.events.indexOf(event);
+    this.eventsService.events[index].nbrLike++;
+
+
   }
 }

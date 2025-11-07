@@ -8,13 +8,14 @@ import { HomeComponent } from './layout/home/home.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ProductComponent } from './layout/product/product.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePersPipe } from './shared/pipes/date-pers.pipe';
 import { TestDirective } from './shared/Directives/test.directive';
 import { TelephoneComponent } from './layout/telephone/telephone.component';
 import { TvComponent } from './layout/tv/tv.component';
 import { CardProductComponent } from './layout/card-product/card-product.component';
-import { OrderByLikesPipe } from './shared/pipes/order-by-likes.pipe';
+import { ChangeBackgroundDirective } from './shared/Directives/change-background.directive';
+import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,16 @@ import { OrderByLikesPipe } from './shared/pipes/order-by-likes.pipe';
     TelephoneComponent,
     TvComponent,
     CardProductComponent,
+    ChangeBackgroundDirective,
+    ReactiveFormComponent, // ✅ ta directive doit être ici
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

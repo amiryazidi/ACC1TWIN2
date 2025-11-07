@@ -22,8 +22,6 @@ import { OrderByLikesPipe } from '../../shared/pipes/order-by-likes.pipe';
   imports: [
     CommonModule,
     EventsRoutingModule,
-    
-
   ]
 })
 export class EventsModule { }

@@ -1,12 +1,15 @@
-<div class="container py-3">
+
+  <div class="container py-3">
   <h3>🔥 Top 3 des meilleurs événements</h3>
+
   <div *ngIf="events.length === 0" class="text-muted">
     Aucun événement pour le moment.
   </div>
 
   <div class="row g-3 mt-2">
-    <div class="col-md-4" *ngFor="let evt of events | orderByLikes | slice:0:3">
-     <app-card-event [e]="evt" [showButtons]="false" ></app-card-event>
+    <div class="col-md-4" *ngFor="let evt of events | slice:0:3 |orderByLikes">
+     <app-card-event [e]="evt" [showButtons]="false"></app-card-event>
       </div>
     </div>
   </div>
+

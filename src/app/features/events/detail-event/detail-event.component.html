@@ -1,1 +1,61 @@
-{{id}}
+<div class="container py-5" *ngIf="event">
+  <div class="card shadow-lg border-0">
+    <div class="row g-0">
+      <!-- Image de l'événement -->
+      <div class="col-md-5">
+        <img [src]="event.imageUrl"
+             [alt]="event.title"
+             class="img-fluid rounded-start h-100"
+             style="object-fit: cover;">
+      </div>
+
+      <!-- Détails de l'événement -->
+      <div class="col-md-7">
+        <div class="card-body p-4">
+          <h2 class="card-title mb-3 text-primary fw-bold">
+            {{ event.title }}
+          </h2>
+          <p class="text-muted mb-1">
+            📍 {{ event.location }}
+          </p>
+          <p class="text-muted mb-3">
+            🗓️ {{ event.date | date:'fullDate' }}
+          </p>
+
+          <p class="lead">{{ event.description }}</p>
+
+          <hr class="my-4">
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p class="fw-bold mb-1">
+                💰 Prix : <span class="text-success">{{ event.price | currency:'TND':'symbol-narrow' }}</span>
+              </p>
+              <p class="mb-0">
+                🎟️ Places disponibles :
+                <span [class.text-danger]="event.nbPlaces < 10">
+                  {{ event.nbPlaces }}
+                </span>
+              </p>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-outline-danger btn-sm me-2">
+                ❤️ {{ event.nbrLike }}
+              </button>
+              <a routerLink="/events" class="btn btn-primary btn-sm">
+                ⬅️ Retour
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Message si aucun événement trouvé -->
+<div class="container py-5 text-center" *ngIf="!event">
+  <h4 class="text-muted">Événement introuvable 😕</h4>
+  <a routerLink="/events" class="btn btn-outline-primary mt-3">Retour à la liste</a>
+</div>
