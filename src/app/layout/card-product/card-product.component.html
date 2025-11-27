@@ -9,5 +9,11 @@
           <div class="card-footer bg-transparent border-0 text-center">
             <button
               class="btn btn-sm btn-primary w-75" [disabled]="p.quantity == 0" (click)="sendDataToParent(p)"> Acheter</button>
+                 <a [routerLink]="['/details', p.id]" class="btn btn-sm btn-outline-primary">
+      <i class="bi bi-eye"></i>  détails
+    </a>
+    <button class="btn btn-danger" (click)="supprimer(p.id)">
+      Delete
+    </button>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-driven-form',
   templateUrl: './driven-form.component.html',
-  styleUrl: './driven-form.component.css'
+  styleUrls: ['./driven-form.component.css']
 })
 export class DrivenFormComponent {
 

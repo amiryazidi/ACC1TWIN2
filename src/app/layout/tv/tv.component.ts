@@ -4,7 +4,7 @@ import { Product } from '../../model/product';
 @Component({
   selector: 'app-tv',
   templateUrl: './tv.component.html',
-  styleUrl: './tv.component.css'
+  styleUrls: ['./tv.component.css']
 })
 export class TvComponent implements OnInit {
 

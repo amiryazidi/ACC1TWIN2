@@ -6,7 +6,7 @@ import { Eventy } from '../../../model/eventy';
 @Component({
   selector: 'app-detail-event',
   templateUrl: './detail-event.component.html',
-  styleUrl: './detail-event.component.css'
+  styleUrls: ['./detail-event.component.css']
 })
 export class DetailEventComponent {
     id: number;

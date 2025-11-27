@@ -4,7 +4,7 @@ import { Eventy } from '../../../model/eventy';
 @Component({
   selector: 'app-card-event',
   templateUrl: './card-event.component.html',
-  styleUrl: './card-event.component.css'
+  styleUrls: ['./card-event.component.css']
 })
 export class CardEventComponent {
  @Input() e:Eventy;

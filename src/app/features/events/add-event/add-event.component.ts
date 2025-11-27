@@ -7,7 +7,7 @@ import { EventsService } from '../../../shared/service/events.service';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
-  styleUrl: './add-event.component.css'
+  styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
 

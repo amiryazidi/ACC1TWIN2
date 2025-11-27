@@ -5,7 +5,7 @@ import { EventsService } from '../../../shared/service/events.service';
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
-  styleUrl: './list-event.component.css'
+  styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent {
 events: Eventy[];

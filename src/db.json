@@ -1,9 +1,29 @@
-
-
 {
   "products": [
-    { "id": "1", "name": "a title", "description": 100 , "like" :10 , "quantity":5 , "image":"image1.jpg"},
-    { "id": "2", "name": "another title", "description": 200 , "like" :20 , "quantity":10 , "image":"image2.jpg"}
+    {
+      "id": "1",
+      "name": "a title",
+      "description": 100,
+      "like": 10,
+      "quantity": 5,
+      "image": "image1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "another title",
+      "description": 200,
+      "like": 20,
+      "quantity": 10,
+      "image": "image2.jpg"
+    },
+    {
+      "id": "0c65",
+      "name": "testproduct",
+      "price": 0,
+      "description": "",
+      "like": 0,
+      "quantity": 0,
+      "image": ""
+    }
   ]
 }
-

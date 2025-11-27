@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  styleUrl: './reactive-form.component.css'
+  styleUrls: ['./reactive-form.component.css']
 })
 export class ReactiveFormComponent {
 

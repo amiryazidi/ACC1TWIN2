@@ -6,11 +6,13 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { ListEventComponent } from './features/events/list-event/list-event.component';
 import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
 import { DrivenFormComponent } from './layout/driven-form/driven-form.component';
+import { DetailsProductComponent } from './layout/details-product/details-product.component';
 
 const routes: Routes = [
  // { path :'events',  component : ListEventComponent},
   { path : '' , redirectTo : 'events' , pathMatch : 'full'}, // default route
   { path : 'product' , component : ProductComponent},
+  { path : 'details/:id' , component : DetailsProductComponent},
   { path : 'rf' , component : ReactiveFormComponent},
   { path : 'dr' , component : DrivenFormComponent},
   { path: 'events', loadChildren: () =>

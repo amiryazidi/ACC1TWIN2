@@ -18,6 +18,8 @@ import { ChangeBackgroundDirective } from './shared/Directives/change-background
 import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
 import { DrivenFormComponent } from './layout/driven-form/driven-form.component';
 import { AddProductComponent } from './layout/add-product/add-product.component';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { DetailsProductComponent } from './layout/details-product/details-product.component';
 
 @NgModule({
   declarations: [
@@ -35,17 +37,17 @@ import { AddProductComponent } from './layout/add-product/add-product.component'
     ChangeBackgroundDirective,
     ReactiveFormComponent,
     DrivenFormComponent,
-    AddProductComponent, // ✅ ta directive doit être ici
-
+    AddProductComponent,
+    DetailsProductComponent, // ✅ ta directive doit être ici
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
