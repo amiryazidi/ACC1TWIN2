@@ -14,9 +14,10 @@
      <label class="form-label">Password</label>
    <input class="form-control" type="text"  formControlName="password">
    <div class="alert alert-danger" *ngIf="formLogin.controls['password'].invalid && formLogin.controls['password'].touched" >
-    <p>password obligatoire</p>
-    <p>password pattern: [a-zA-Z0-9]*</p>
-    <p>password minLength 6</p>
+    <p  *ngIf="formLogin.controls['password'].hasError('required')">
+      password obligatoire</p>
+    <p *ngIf="formLogin.controls['password'].hasError('pattern')">password pattern: [a-zA-Z0-9]*</p>
+    <p *ngIf="formLogin.controls['password'].hasError('minlength')">password minLength 6</p>
    </div>
 
         <label class="form-label">email</label>

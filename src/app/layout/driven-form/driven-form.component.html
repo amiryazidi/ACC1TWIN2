@@ -1,0 +1,19 @@
+<form #myForm="ngForm">
+    <label>login</label>
+    <input name="login" ngModel type="text" #login="ngModel" required minlength="6" class="form-control"  >
+
+    <div *ngIf="login.invalid && login.touched" class="alert alert-danger">
+      <p *ngIf="login.hasError('required')">login est obligatoire</p>
+      <p *ngIf="login.hasError('minlength')">login minlength 6 </p>
+    </div>
+     <label>password</label>
+    <input name="password" ngModel type="text" required minlength="6"  class="form-control"  >
+
+     <label>email</label>
+    <input name="email" ngModel type="text" required email class="form-control">
+
+     <label>age</label>
+    <input name="age" ngModel type="text" required min="18" class="form-control">
+
+      <button (click)="save(myForm)"   [disabled]="myForm.invalid">save</button>
+  </form>

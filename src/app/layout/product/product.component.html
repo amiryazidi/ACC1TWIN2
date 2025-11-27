@@ -1,13 +1,31 @@
 
-<h1>   CHoisissez un type de produit</h1>
-<select  [(ngModel)]="selectedProductType">
+<div class="container mt-5 p-4 shadow rounded" style="max-width: 500px;">
 
+  <h2 class="text-center mb-4 fw-bold">
+    Choisissez un type de produit
+  </h2>
 
-  <option value="telephone">Téléphone</option>
-  <option value="tv">TV</option>
+  <label class="form-label">Type de produit :</label>
 
-</select>
+  <select [(ngModel)]="selectedProductType" class="form-select">
+    <option selected disabled>-- Sélectionner --</option>
+    <option value="telephone">Téléphone</option>
+    <option value="tv">TV</option>
+  </select>
 
+</div>
+
+   <!-- bouton + -->
+  <div class="mt-3">
+    <button class="btn btn-primary" (click)="showAddProduct = true">
+      ➕ Add Product
+    </button>
+  </div>
+
+  <!-- Affichage conditionnel du composant d'ajout -->
+  <div class="mt-3" *ngIf="showAddProduct">
+    <app-add-product></app-add-product>
+  </div>
 
 <div>
    <app-telephone  *ngIf="selectedProductType === 'telephone'"></app-telephone>

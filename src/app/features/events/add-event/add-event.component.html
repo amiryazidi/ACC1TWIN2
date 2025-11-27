@@ -1,0 +1,169 @@
+<form [formGroup]="eventForm" class="container mt-4 p-4 shadow-lg rounded bg-light" style="max-width: 700px;">
+  <h3 class="text-center mb-4 text-primary">Ajouter un Événement</h3>
+
+  <!-- Champ titre -->
+  <div class="mb-3">
+    <label for="title" class="form-label fw-bold">Titre de l'événement</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      class="form-control"
+      placeholder="Ex: Festival d'été"
+    />
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched">
+      <small *ngIf="eventForm.get('title')?.errors?.['required']">Le titre est requis.</small>
+      <small *ngIf="eventForm.get('title')?.errors?.['minlength']">Le titre doit contenir au moins 5 caractères.</small>
+      <small *ngIf="eventForm.get('title')?.errors?.['pattern']">Le titre ne doit contenir que des lettres.</small>
+      <small *ngIf="eventForm.controls['title'].hasError('pattern')" >Le titre ne doit contenir que des lettres.</small>
+    </div>
+  </div>
+
+  <!-- Champ description -->
+  <div class="mb-3">
+    <label for="description" class="form-label fw-bold">Description</label>
+    <textarea
+      id="description"
+      rows="3"
+      formControlName="description"
+      class="form-control"
+      placeholder="Décrivez l'événement..."
+    ></textarea>
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched">
+      <small *ngIf="eventForm.get('description')?.errors?.['required']">La description est requise.</small>
+      <small *ngIf="eventForm.get('description')?.errors?.['minlength']">La description doit contenir au moins 30 caractères.</small>
+    </div>
+  </div>
+
+  <!-- Champ date -->
+  <div class="mb-3">
+    <label for="date" class="form-label fw-bold">Date de l'événement</label>
+    <input
+      id="date"
+      type="date"
+      formControlName="date"
+      class="form-control"
+    />
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched">
+      <small *ngIf="eventForm.get('date')?.errors?.['required']">La date est requise.</small>
+      <small *ngIf="eventForm.get('date')?.errors?.['futureDateInvalid']">La date doit être au moins 7 jours dans le futur.</small>
+    </div>
+  </div>
+
+  <!-- Champ prix -->
+  <div class="mb-3">
+    <label for="price" class="form-label fw-bold">Prix</label>
+    <input
+      id="price"
+      type="text"
+      formControlName="price"
+      class="form-control"
+      placeholder="Ex: 25"
+    />
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('price')?.invalid && eventForm.get('price')?.touched">
+      <small *ngIf="eventForm.get('price')?.errors?.['required']">Le prix est requis.</small>
+      <small *ngIf="eventForm.get('price')?.errors?.['pattern']">Le prix doit être un nombre valide.</small>
+    </div>
+  </div>
+
+  <!-- Champ nombre de places -->
+  <div class="mb-3">
+    <label for="nbPlaces" class="form-label fw-bold">Nombre de places</label>
+    <input
+      id="nbPlaces"
+      type="text"
+      formControlName="nbPlaces"
+      class="form-control"
+      placeholder="Ex: 50"
+    />
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('nbPlaces')?.invalid && eventForm.get('nbPlaces')?.touched">
+      <small *ngIf="eventForm.get('nbPlaces')?.errors?.['required']">Le nombre de places est requis.</small>
+      <small *ngIf="eventForm.get('nbPlaces')?.errors?.['pattern']">Le nombre de places doit être un nombre valide entre 1 et 100.</small>
+    </div>
+  </div>
+
+  <!-- Champ lieu -->
+  <div class="mb-3">
+    <label for="lieu" class="form-label fw-bold">Lieu de l'événement</label>
+    <input
+      id="lieu"
+      type="text"
+      formControlName="lieu"
+      class="form-control"
+      placeholder="Ex: Paris"
+    />
+    <div class="alert alert-danger mt-2" *ngIf="eventForm.get('lieu')?.invalid && eventForm.get('lieu')?.touched">
+      <small *ngIf="eventForm.get('lieu')?.errors?.['required']">Le lieu est requis.</small>
+      <small *ngIf="eventForm.get('lieu')?.errors?.['minlength']">Le lieu doit contenir au moins 5 caractères.</small>
+    </div>
+  </div>
+
+  <!-- Champ image -->
+  <div class="mb-4">
+    <label for="image" class="form-label fw-bold">Image URL</label>
+    <input
+      id="image"
+      type="text"
+      formControlName="image"
+      class="form-control"
+      placeholder="Ex: https://exemple.com/image.jpg"
+    />
+  </div>
+<div formArrayName="domaines">
+  <div *ngFor="let domaine of domaines.controls; let i = index">
+    <input [formControlName]="i" placeholder="Domaine">
+    <button type="button" (click)="addDomain()">+</button>
+
+    <div *ngIf="domaine.invalid && domaine.touched">
+      Le domaine doit comporter entre 3 et 20 caractères.
+    </div>
+  </div>
+</div>
+  <!-- Section Adresse détaillée -->
+<h3>Adresse détaillée</h3>
+<div formGroupName="detailedAddress" class="address-section">
+
+  <div>
+    <label for="street">Avenue :</label>
+    <input id="street" type="text" formControlName="street">
+    <div *ngIf="eventForm.get('detailedAddress.street')?.invalid && eventForm.get('detailedAddress.street')?.touched">
+      Le champ "Avenue" est obligatoire.
+    </div>
+  </div>
+
+  <div>
+    <label for="city">Ville :</label>
+    <input id="city" type="text" formControlName="city">
+    <div *ngIf="eventForm.get('detailedAddress.city')?.invalid && eventForm.get('detailedAddress.city')?.touched">
+      Le champ "Ville" est obligatoire.
+    </div>
+  </div>
+
+  <div>
+    <label for="governorate">Gouvernorat :</label>
+    <input id="governorate" type="text" formControlName="governorate">
+    <div *ngIf="eventForm.get('detailedAddress.governorate')?.invalid && eventForm.get('detailedAddress.governorate')?.touched">
+      Le champ "Gouvernorat" est obligatoire.
+    </div>
+  </div>
+
+  <div>
+    <label for="zipcode">Code postal :</label>
+    <input id="zipcode" type="text" formControlName="zipcode">
+    <div *ngIf="eventForm.get('detailedAddress.zipcode')?.hasError('required') && eventForm.get('detailedAddress.zipcode')?.touched">
+      Le champ "Code postal" est obligatoire.
+    </div>
+    <div *ngIf="eventForm.get('detailedAddress.zipcode')?.hasError('pattern')">
+      Le code postal doit comporter exactement 4 chiffres.
+    </div>
+  </div>
+
+</div>
+
+  <!-- Bouton -->
+  <div class="text-center">
+    <button type="submit" (click)="save()" class="btn btn-primary px-4 py-2" [disabled]="eventForm.invalid">
+      <i class="bi bi-plus-circle me-2"></i>Ajouter l'événement
+    </button>
+  </div>
+</form>

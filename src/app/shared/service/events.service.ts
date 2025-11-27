@@ -64,4 +64,9 @@ export class EventsService {
   getEventById(id: number) {
     return this.events.find(event => event.id === id);
   }
+    addEvent(event: any) {
+    this.events.push(event);
+    console.log('Event ajouté:', event);
+    // Here, you would typically send the event data to a backend server.
+  }
 }

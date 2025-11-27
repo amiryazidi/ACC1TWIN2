@@ -1,0 +1,33 @@
+<p>Formulaire de Participation</p>
+
+<form #ParticipationForm="ngForm" (ngSubmit)="onSubmit(ParticipationForm)">
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" #email="ngModel" name="email" placeholder="Entrez votre adresse email" ngModel required email class="form-control">
+<div *ngIf="email.invalid && email.touched" class="error">
+  <small *ngIf="email.errors?.['required']">Email et obligatoire</small>
+    <small *ngIf="email.errors?.['email']">Format email invalide</small>
+</div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="tickets" class="form-label">Nombre de Tickets</label>
+    <input type="number" name="nbPlaces" #nbPlaces="ngModel" class="form-control" id="tickets" placeholder="Entrez le nombre de tickets" (blur)="calculateTotalPrice()" [(ngModel)]="participation.nbPlaces" required min="1" >
+
+    <div *ngIf="nbPlaces.invalid && nbPlaces.touched" class="error">
+    <small *ngIf="nbPlaces.errors?.['required']">nbre de place et obligatoire/small>
+    <small *ngIf="nbPlaces.errors?.['min']">nombre doit etre >0 </small>
+
+  </small>
+  </div>
+
+  </div>
+  <div *ngIf="totalPrice >0" >
+  <p>
+    Prix totale:{{totalPrice}} Dt
+  </p>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="ParticipationForm.invalid">Participer</button>
+</form>

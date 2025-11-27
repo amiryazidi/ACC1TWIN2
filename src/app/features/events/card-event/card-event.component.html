@@ -20,7 +20,10 @@
     </div>
 
     <a [routerLink]="['./details', e.id]" class="btn btn-sm btn-outline-primary">
-      <i class="bi bi-eye"></i> Voir détails
+      <i class="bi bi-eye"></i>  détails
     </a>
+       <button [routerLink]="['./particapte', e.id,e.price]" class="btn btn-sm btn-outline-primary">
+         participate
+    </button>
   </div>
 </div>

@@ -8,6 +8,8 @@ import { Product } from '../../model/product';
 export class ProductComponent  {
 
   selectedProductType: string = '';
+  showAddProduct = false;
+
   constructor() {
   }
 

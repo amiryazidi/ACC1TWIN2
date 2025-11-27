@@ -1,5 +1,7 @@
 <div  class="container py-4">
   <h2 class="mb-3">Liste des événements</h2>
+    <button routerLink="/events/add">Proposer un événement</button>
+
   <div class="row g-3">
     <app-card-event appChangeBackground class="col-md-4" *ngFor="let evt of events" [e]="evt" (notif)="likeEvent(evt)" [showButtons]="true">
     </app-card-event>

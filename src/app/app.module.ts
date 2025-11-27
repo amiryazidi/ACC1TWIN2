@@ -16,6 +16,8 @@ import { TvComponent } from './layout/tv/tv.component';
 import { CardProductComponent } from './layout/card-product/card-product.component';
 import { ChangeBackgroundDirective } from './shared/Directives/change-background.directive';
 import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
+import { DrivenFormComponent } from './layout/driven-form/driven-form.component';
+import { AddProductComponent } from './layout/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.comp
     TvComponent,
     CardProductComponent,
     ChangeBackgroundDirective,
-    ReactiveFormComponent, // ✅ ta directive doit être ici
+    ReactiveFormComponent,
+    DrivenFormComponent,
+    AddProductComponent, // ✅ ta directive doit être ici
 
 
   ],
