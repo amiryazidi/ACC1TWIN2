@@ -18,8 +18,9 @@ import { ChangeBackgroundDirective } from './shared/Directives/change-background
 import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.component';
 import { DrivenFormComponent } from './layout/driven-form/driven-form.component';
 import { AddProductComponent } from './layout/add-product/add-product.component';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { DetailsProductComponent } from './layout/details-product/details-product.component';
+import { authInterceptor } from './core/interceptor/auth.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { DetailsProductComponent } from './layout/details-product/details-produc
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [provideHttpClient()],
+  providers: [  provideHttpClient(
+    withInterceptors([authInterceptor])
+  )],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
