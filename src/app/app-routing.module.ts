@@ -8,34 +8,43 @@ import { ReactiveFormComponent } from './layout/reactive-form/reactive-form.comp
 import { DrivenFormComponent } from './layout/driven-form/driven-form.component';
 import { DetailsProductComponent } from './layout/details-product/details-product.component';
 import { AddProductComponent } from './layout/add-product/add-product.component';
-import { authGuard } from './core/guards/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
+import { SignupComponent } from './features/users/signup/signup.component';
+import { SigninComponent } from './features/users/signin/signin.component';
 
 const routes: Routes = [
+  // Default route - redirect to login
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
+  // Login route (no guard - public)
+  { path: 'login', component: SigninComponent },
 
-  // tes anciennes routes
-  { path: 'product', component: ProductComponent },
-  { path: 'details/:id', component: DetailsProductComponent },
-  { path: 'rf', component: ReactiveFormComponent },
-  { path: 'dr', component: DrivenFormComponent },
-  { path: 'add', component: AddProductComponent, canActivate: [authGuard] },
-  { path: 'edit/:id', component: AddProductComponent, canActivate: [authGuard] },
+  // Protected routes
+  { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
+  { path: 'details/:id', component: DetailsProductComponent, canActivate: [AuthGuard] },
+  { path: 'rf', component: ReactiveFormComponent, canActivate: [AuthGuard] },
+  { path: 'dr', component: DrivenFormComponent, canActivate: [AuthGuard] },
+  { path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: AddProductComponent, canActivate: [AuthGuard] },
 
-  // lazy loading
+  // Lazy loading (protected)
   {
     path: 'events',
     loadChildren: () =>
-      import('./features/events/events.module').then(m => m.EventsModule)
+      import('./features/events/events.module').then(m => m.EventsModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'tickets',
     loadChildren: () =>
-      import('./features/tickets/tickets.module').then(m => m.TicketsModule)
+      import('./features/tickets/tickets.module').then(m => m.TicketsModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'feedback',
     loadChildren: () =>
-      import('./features/feedback/feedback.module').then(m => m.FeedbackModule)
+      import('./features/feedback/feedback.module').then(m => m.FeedbackModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'users',
@@ -43,8 +52,8 @@ const routes: Routes = [
       import('./features/users/users.module').then(m => m.UsersModule)
   },
 
-  // 404
-  { path: '**', component: NotFoundComponent }
+  // 404 - redirect to login
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
