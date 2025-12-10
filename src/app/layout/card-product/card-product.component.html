@@ -15,5 +15,10 @@
     <button class="btn btn-danger" (click)="supprimer(p.id)">
       Delete
     </button>
+
+      <button class="btn btn-danger" [routerLink]="['/edit',p.id]">
+      Edit
+    </button>
+
           </div>
         </div>

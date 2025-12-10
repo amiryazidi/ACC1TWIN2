@@ -14,7 +14,7 @@ export class ProductService {
   getAllProduct(): Observable<Product[]>{
    return this.http.get<Product[]>(this.api)
   }
-   
+
   getProductById(id:number): Observable<Product>{
     return this.http.get<Product>(this.api + '/' + id)
 }
@@ -23,5 +23,9 @@ addProduct(p: Product):Observable<Product>{
 }
 deleteProduct(id:number) {
   return this.http.delete(this.api +'/' + id)
+}
+
+updateProduct(p:Product,id:number):Observable<Product>{
+  return this.http.put<Product>(this.api + '/' + id, p)
 }
 }
