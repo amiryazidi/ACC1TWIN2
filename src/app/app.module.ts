@@ -20,7 +20,7 @@ import { DrivenFormComponent } from './layout/driven-form/driven-form.component'
 import { AddProductComponent } from './layout/add-product/add-product.component';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { DetailsProductComponent } from './layout/details-product/details-product.component';
-import { authInterceptor } from './core/interceptor/auth.guard';
+//import { authInterceptor } from './core/interceptor/auth.guard';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { authInterceptor } from './core/interceptor/auth.guard';
     ReactiveFormsModule,
   ],
   providers: [  provideHttpClient(
-    withInterceptors([authInterceptor])
+
   )],
   bootstrap: [AppComponent]
 })

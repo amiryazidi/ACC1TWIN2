@@ -34,7 +34,7 @@ export class SignupComponent {
 
   /**
    * Méthode appelée lors de la soumission du formulaire
-   */
+   *
   onSubmit(): void {
     // 1. Vérifier que les champs obligatoires sont remplis
     if (!this.registerData.email || !this.registerData.password) {
@@ -71,5 +71,5 @@ export class SignupComponent {
         this.isLoading = false;
       }
     });
-  }
+  }*/
 }
