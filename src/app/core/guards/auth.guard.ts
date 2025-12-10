@@ -1,17 +1,24 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { AuthService } from '../../shared/service/auth.service';
 
-export const authGuard: CanActivateFn = () => {
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-  const authService = inject(AuthService);
-  const router = inject(Router);
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
-  if (authService.isLoggedIn()) {
-    return true; // ✅ accès autorisé
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.auth.isLoggedIn()) {
+      return true;
+    }
+
+    // redirect to login and include the attempted URL for redirect after sign-in
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    return false;
   }
-
-  // ❌ accès refusé → redirection
-  router.navigate(['/users/signin']);
-  return false;
-};
+}
